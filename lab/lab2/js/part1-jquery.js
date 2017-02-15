@@ -95,6 +95,15 @@ var Stamen_TonerLite = L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/ton
     favorite color. Don't spend too much time on thinking about the perfect object to represent with
     this form, just about anything will do.
 
+ ===================== */
+
+    //$("#text-input1").val('Set new text');
+
+
+
+
+  /* =====================
+
   Task 2: Setting (writing) input values
     *NOTE*: An input's value is not the same as an HTML element's text. We use $(selector).val() as
             opposed to $(selector).text() in this case.
@@ -170,4 +179,37 @@ var Stamen_TonerLite = L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/ton
 // been interpreted. It is, therefore, an example of asynchronous behavior.
 $(document).ready(function() {
   // Do your stuff here
+  $("#text-label1").text("Lat");
+  $("#text-label2").text("Lon");
+  $("#text-label3").text("Description");
+  $("#number-label").text("Age");
+  $("#checkbox-label1").text("US Citizen");
+  $("#checkbox-label2").text("Checkbox");
+  $("#color-label").text("Color");
+  $("#text-input1").val("39.950929");
+  $("#text-input2").val("-75.175538");
+  $("#text-input3").val("My House");
+  $("#numeric-input").val("26");
+  $("#cbox-input1").prop("checked", true);
+  $("#cbox-input2").prop("checked", true);
+  $("#color-input").val("#ce2160");
+  var form = {};
+  form.field1 = $("#text-input1").val();
+  form.field2 = $("#text-input2").val();
+  form.field3 = $("#text-input3").val();
+  form.field4 = $("#numeric-input").val();
+  form.field5 = $("#cbox-input1").prop("checked");
+  form.field6 = $("#cbox-input2").prop("checked");
+  form.field7 = $("#color-input").val();
+  //console.log(form);
+  $('#text-input1').prop('disabled', false);
+  $("#text-input2").prop('disabled', false);
+  $("#text-input3").prop('disabled', false);
+  $("#numeric-input").prop('disabled', false);
+  $("#cbox-input1").prop('disabled', false);
+  $("#cbox-input2").prop('disabled', false);
+  $("#color-input").prop('disabled', false);
+  $("body > div.sidebar > button").click(form, console.log(form));
+  var marker = L.circleMarker([form.field1,form.field2], {color:form.field7}).addTo(map);
+  marker.bindPopup(form.field3).openPopup();
 });
